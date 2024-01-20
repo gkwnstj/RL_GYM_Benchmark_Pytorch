@@ -187,7 +187,7 @@ class DDPGagent(object):
 
     ## TD 타깃 계산
     def td_target(self, rewards, q_values, dones):
-        y_k = np.empty((q_values.shape[0],1), dtype = np.float32)
+        y_k = np.asarray(q_values)
         for i in range(q_values.shape[0]): # number of batch
             if dones[i]:
                 y_k[i] = rewards[i]
